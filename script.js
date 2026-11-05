@@ -1,667 +1,175 @@
-:root {
-    --bg-dark-wine: #261014;
-    --card-ivory: rgba(253, 250, 246, 0.92);
-    --cherry-red: #800020;
-    --cherry-hover: #5c0017;
-    --charcoal-gray: #2b2927;
-    --muted-gray: #78746e;
-    --border-ivory: #e6dfd3;
-    --gold-accent: #c5a059;
-    --radius-lg: 24px;
-    --radius-md: 14px;
-    --shadow-soft: 0 20px 45px rgba(20, 5, 8, 0.35);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: var(--bg-dark-wine);
-    color: var(--charcoal-gray);
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem 1rem;
-    position: relative;
-    overflow-x: hidden;
-}
-
-/* Rich Cherry Red & Dark Wine Gradient Orbs Background */
-.gradient-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.65;
-}
-
-.blob-1 {
-    width: 420px;
-    height: 420px;
-    background: #610c1e;
-    top: -100px;
-    left: -100px;
-}
-
-.blob-2 {
-    width: 450px;
-    height: 450px;
-    background: #3d0813;
-    bottom: -120px;
-    right: -100px;
-}
-
-.blob-3 {
-    width: 300px;
-    height: 300px;
-    background: #8f1e36;
-    opacity: 0.4;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Main Card Container */
-.app-card {
-    background: var(--card-ivory);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-    width: 100%;
-    max-width: 460px;
-    padding: 2rem 1.5rem;
-}
-
-/* Header with Cursive Handwriting */
-.header {
-    text-align: center;
-    margin-bottom: 1.8rem;
-}
-
-.brand-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3.5rem;
-    color: var(--cherry-red);
-    line-height: 1.1;
-    margin-bottom: 0.2rem;
-}
-
-.tagline {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 0.92rem;
-    color: var(--muted-gray);
-}
-
-/* Upload Area */
-.upload-zone input {
-    display: none;
-}
-
-.upload-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3.5rem 1.5rem;
-    background: #ffffff;
-    border: 2px dashed #d8cfc4;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.upload-box:hover {
-    border-color: var(--cherry-red);
-    background: #fffdfa;
-}
-
-.upload-icon {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    color: var(--cherry-red);
-    margin-bottom: 0.6rem;
-}
-
-.upload-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--charcoal-gray);
-    margin-bottom: 0.3rem;
-}
-
-.upload-sub {
-    font-size: 0.78rem;
-    color: var(--muted-gray);
-}
-
-/* Studio Workspace */
-.workspace {
-    display: none;
-    flex-direction: column;
-    gap: 1.4rem;
-}
-
-.canvas-frame {
-    position: relative;
-    width: 100%;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: #111010;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-height: 480px;
-}
-
-canvas {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-.compare-badge {
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    background: rgba(43, 41, 39, 0.75);
-    color: #fcfbf7;
-    font-size: 0.68rem;
-    padding: 0.35rem 0.75rem;
-    border-radius: 20px;
-    letter-spacing: 0.03em;
-    pointer-events: none;
-    backdrop-filter: blur(4px);
-}
-
-/* Intensity Slider */
-.intensity-card {
-    background: #ffffff;
-    border: 1px solid var(--border-ivory);
-    border-radius: var(--radius-md);
-    padding: 1rem 1.2rem;
-}
-
-.slider-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.82rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: var(--charcoal-gray);
-}
-
-input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 5px;
-    background: #ebdcd0;
-    border-radius: 3px;
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--cherry-red);
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(128, 0, 32, 0.3);
-}
-
-/* Full-Width Classy Filter Buttons */
-.filter-deck {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-}
-
-.deck-title {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted-gray);
-    font-weight: 600;
-}
-
-.filter-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    max-height: 230px;
-    overflow-y: auto;
-    padding-right: 4px;
-}
-
-/* Long, centered filter buttons */
-.filter-btn {
-    width: 100%;
-    background: #ffffff;
-    border: 1px solid var(--border-ivory);
-    border-radius: var(--radius-md);
-    padding: 0.85rem 1rem;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.filter-btn .btn-name {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--charcoal-gray);
-    text-align: center;
-}
-
-.filter-btn:hover {
-    border-color: var(--cherry-red);
-    background: #fffdfa;
-}
-
-.filter-btn.active {
-    background: var(--cherry-red);
-    border-color: var(--cherry-red);
-    box-shadow: 0 4px 12px rgba(128, 0, 32, 0.25);
-}
-
-.filter-btn.active .btn-name {
-    color: #ffffff;
-    font-weight: 600;
-}
-
-/* Action Buttons */
-.action-bar {
-    display: flex;
-    gap: 0.8rem;
-    margin-top: 0.4rem;
-}
-
-.btn {
-    flex: 1;
-    padding: 0.9rem;
-    border-radius: var(--radius-md);
-    font-size: 0.85rem;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    border: none;
-    transition: all 0.25s ease;
-}
-
-.btn-primary {
-    background: var(--cherry-red);
-    color: #ffffff;
-    box-shadow: 0 4px 14px rgba(128, 0, 32, 0.28);
-}
-
-.btn-primary:hover {
-    background: var(--cherry-hover);
-}
-
-.btn-secondary {
-    background: #ffffff;
-    border: 1px solid var(--border-ivory);
-    color: var(--charcoal-gray);
-}
-
-.btn-secondary:hover {
-    border-color: var(--charcoal-gray);
-}
-:root {
-    --bg-dark-wine: #261014;
-    --card-ivory: rgba(253, 250, 246, 0.92);
-    --cherry-red: #800020;
-    --cherry-hover: #5c0017;
-    --charcoal-gray: #2b2927;
-    --muted-gray: #78746e;
-    --border-ivory: #e6dfd3;
-    --gold-accent: #c5a059;
-    --radius-lg: 24px;
-    --radius-md: 14px;
-    --shadow-soft: 0 20px 45px rgba(20, 5, 8, 0.35);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: var(--bg-dark-wine);
-    color: var(--charcoal-gray);
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem 1rem;
-    position: relative;
-    overflow-x: hidden;
-}
-
-/* Rich Cherry Red & Dark Wine Gradient Orbs Background */
-.gradient-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.65;
-}
-
-.blob-1 {
-    width: 420px;
-    height: 420px;
-    background: #610c1e;
-    top: -100px;
-    left: -100px;
-}
-
-.blob-2 {
-    width: 450px;
-    height: 450px;
-    background: #3d0813;
-    bottom: -120px;
-    right: -100px;
-}
-
-.blob-3 {
-    width: 300px;
-    height: 300px;
-    background: #8f1e36;
-    opacity: 0.4;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Main Card Container */
-.app-card {
-    background: var(--card-ivory);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-    width: 100%;
-    max-width: 460px;
-    padding: 2rem 1.5rem;
-}
-
-/* Header with Cursive Handwriting */
-.header {
-    text-align: center;
-    margin-bottom: 1.8rem;
-}
-
-.brand-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3.5rem;
-    color: var(--cherry-red);
-    line-height: 1.1;
-    margin-bottom: 0.2rem;
-}
-
-.tagline {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 0.92rem;
-    color: var(--muted-gray);
-}
-
-/* Upload Area */
-.upload-zone input {
-    display: none;
-}
-
-.upload-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3.5rem 1.5rem;
-    background: #ffffff;
-    border: 2px dashed #d8cfc4;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.upload-box:hover {
-    border-color: var(--cherry-red);
-    background: #fffdfa;
-}
-
-.upload-icon {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    color: var(--cherry-red);
-    margin-bottom: 0.6rem;
-}
-
-.upload-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--charcoal-gray);
-    margin-bottom: 0.3rem;
-}
-
-.upload-sub {
-    font-size: 0.78rem;
-    color: var(--muted-gray);
-}
-
-/* Studio Workspace */
-.workspace {
-    display: none;
-    flex-direction: column;
-    gap: 1.4rem;
-}
-
-.canvas-frame {
-    position: relative;
-    width: 100%;
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: #111010;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-height: 480px;
-}
-
-canvas {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-.compare-badge {
-    position: absolute;
-    bottom: 12px;
-    right: 12px;
-    background: rgba(43, 41, 39, 0.75);
-    color: #fcfbf7;
-    font-size: 0.68rem;
-    padding: 0.35rem 0.75rem;
-    border-radius: 20px;
-    letter-spacing: 0.03em;
-    pointer-events: none;
-    backdrop-filter: blur(4px);
-}
-
-/* Intensity Slider */
-.intensity-card {
-    background: #ffffff;
-    border: 1px solid var(--border-ivory);
-    border-radius: var(--radius-md);
-    padding: 1rem 1.2rem;
-}
-
-.slider-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.82rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: var(--charcoal-gray);
-}
-
-input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 5px;
-    background: #ebdcd0;
-    border-radius: 3px;
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--cherry-red);
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(128, 0, 32, 0.3);
-}
-
-/* Full-Width Classy Filter Buttons */
-.filter-deck {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-}
-
-.deck-title {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted-gray);
-    font-weight: 600;
-}
-
-.filter-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    max-height: 230px;
-    overflow-y: auto;
-    padding-right: 4px;
-}
-
-/* Long, centered filter buttons */
-.filter-btn {
-    width: 100%;
-    background: #ffffff;
-    border: 1px solid var(--border-ivory);
-    border-radius: var(--radius-md);
-    padding: 0.85rem 1rem;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.filter-btn .btn-name {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--charcoal-gray);
-    text-align: center;
-}
-
-.filter-btn:hover {
-    border-color: var(--cherry-red);
-    background: #fffdfa;
-}
-
-.filter-btn.active {
-    background: var(--cherry-red);
-    border-color: var(--cherry-red);
-    box-shadow: 0 4px 12px rgba(128, 0, 32, 0.25);
-}
-
-.filter-btn.active .btn-name {
-    color: #ffffff;
-    font-weight: 600;
-}
-
-/* Action Buttons */
-.action-bar {
-    display: flex;
-    gap: 0.8rem;
-    margin-top: 0.4rem;
-}
-
-.btn {
-    flex: 1;
-    padding: 0.9rem;
-    border-radius: var(--radius-md);
-    font-size: 0.85rem;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    border: none;
-    transition: all 0.25s ease;
-}
-
-.btn-primary {
-    background: var(--cherry-red);
-    color: #ffffff;
-    box-shadow: 0 4px 14px rgba(128, 0, 32, 0.28);
-}
-
-.btn-primary:hover {
-    background: var(--cherry-hover);
-}
-
-.btn-secondary {
-    background: #ffffff;
-    border: 1px solid var(--border-ivory);
-    color: var(--charcoal-gray);
-}
-
-.btn-secondary:hover {
-    border-color: var(--charcoal-gray);
-}
-  
+const imageInput = document.getElementById('imageInput');
+const uploadZone = document.getElementById('uploadZone');
+const workspace = document.getElementById('workspace');
+const canvas = document.getElementById('mainCanvas');
+const ctx = canvas.getContext('2d');
+const intensitySlider = document.getElementById('intensitySlider');
+const intensityValue = document.getElementById('intensityValue');
+const filterList = document.getElementById('filterList');
+const downloadBtn = document.getElementById('downloadBtn');
+const changePhotoBtn = document.getElementById('changePhotoBtn');
+const canvasFrame = document.getElementById('canvasFrame');
+
+let baseImage = null;
+let activeFilter = 'normal';
+let currentIntensity = 1.0;
+
+// Upload Handler
+imageInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+            baseImage = img;
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            renderPipeline();
+            uploadZone.style.display = 'none';
+            workspace.style.display = 'flex';
+        };
+        img.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+});
+
+// Preset Button Click Handlers
+filterList.addEventListener('click', (e) => {
+    const btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter = btn.getAttribute('data-filter');
+    renderPipeline();
+});
+
+// Intensity Slider Change
+intensitySlider.addEventListener('input', (e) => {
+    currentIntensity = e.target.value / 100;
+    intensityValue.textContent = `${e.target.value}%`;
+    renderPipeline();
+});
+
+// Ultra-Authentic Image Processing Pipeline
+function renderPipeline() {
+    if (!baseImage) return;
+
+    // Reset base canvas
+    ctx.drawImage(baseImage, 0, 0);
+    if (activeFilter === 'normal' && currentIntensity === 1.0) return;
+
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imgData.data;
+
+    // Filter Profile Parameters
+    let exp = 0, contrast = 0, warmth = 0, saturation = 1.0, grain = false;
+
+    switch (activeFilter) {
+        case 'glow90s':
+            exp = 15; contrast = -24; warmth = 12; saturation = 0.92; grain = true;
+            break;
+        case 'digicam2010':
+            exp = 10; contrast = -8; warmth = 16; saturation = 1.12; grain = true;
+            break;
+        case 'cherryVelvet':
+            exp = 5; contrast = 8; warmth = 25; saturation = 1.15;
+            break;
+        case 'noirArchival':
+            saturation = 0.0; contrast = 28; exp = -6; grain = true;
+            break;
+        case 'cinematicTeal':
+            warmth = -14; contrast = 14; saturation = 1.08;
+            break;
+        case 'fadedEktar':
+            exp = 6; contrast = -16; warmth = 6; saturation = 0.82; grain = true;
+            break;
+        case 'softMatte':
+            exp = 12; contrast = -32; saturation = 0.85;
+            break;
+        case 'heavyAnalog':
+            exp = 0; contrast = 6; saturation = 0.88; grain = true;
+            break;
+    }
+
+    const factor = currentIntensity;
+
+    // Process Pixels
+    for (let i = 0; i < data.length; i += 4) {
+        let r = data[i];
+        let g = data[i + 1];
+        let b = data[i + 2];
+
+        // Exposure Adjustment
+        if (exp !== 0) {
+            r += exp * factor;
+            g += exp * factor;
+            b += exp * factor;
+        }
+
+        // Contrast Curve
+        if (contrast !== 0) {
+            let cFactor = (259 * (contrast * factor + 255)) / (255 * (259 - contrast * factor));
+            r = cFactor * (r - 128) + 128;
+            g = cFactor * (g - 128) + 128;
+            b = cFactor * (b - 128) + 128;
+        }
+
+        // Warmth / Temperature
+        if (warmth !== 0) {
+            r += warmth * factor;
+            b -= warmth * factor;
+        }
+
+        // Saturation
+        if (saturation !== 1.0) {
+            let lum = 0.299 * r + 0.587 * g + 0.114 * b;
+            let sFactor = 1.0 + (saturation - 1.0) * factor;
+            r = lum + sFactor * (r - lum);
+            g = lum + sFactor * (g - lum);
+            b = lum + sFactor * (b - lum);
+        }
+
+        // Analog Film Grain Simulation
+        if (grain && Math.random() > 0.55) {
+            let noise = (Math.random() - 0.5) * 32 * factor;
+            r += noise;
+            g += noise;
+            b += noise;
+        }
+
+        // Clamp to 0-255 RGB spectrum
+        data[i] = Math.min(255, Math.max(0, r));
+        data[i + 1] = Math.min(255, Math.max(0, g));
+        data[i + 2] = Math.min(255, Math.max(0, b));
+    }
+
+    ctx.putImageData(imgData, 0, 0);
+}
+
+// Tap & Hold to Compare Original
+const showOriginal = () => { if (baseImage) ctx.drawImage(baseImage, 0, 0); };
+canvasFrame.addEventListener('mousedown', showOriginal);
+canvasFrame.addEventListener('touchstart', showOriginal);
+canvasFrame.addEventListener('mouseup', renderPipeline);
+canvasFrame.addEventListener('touchend', renderPipeline);
+
+// Download HD Photo
+downloadBtn.addEventListener('click', () => {
+    if (!baseImage) return;
+    const link = document.createElement('a');
+    link.download = `style-filter-${Date.now()}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+});
+
+// Reset / Change Photo
+changePhotoBtn.addEventListener('click', () => {
+    baseImage = null;
+    imageInput.value = '';
+    workspace.style.display = 'none';
+    uploadZone.style.display = 'block';
+});
+    
