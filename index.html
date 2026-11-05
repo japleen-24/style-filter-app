@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style — Ultra-Authentic Filter Suite</title>
+    <!-- Google Fonts: Dancing Script for the handwritten title, Playfair Display & Poppins for editorial typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Deep Cherry Red & Wine Gradient Background Elements -->
+    <div class="gradient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app-card">
+        <header class="header">
+            <h1 class="brand-title">Style</h1>
+            <p class="tagline">A suitable filter for you, made special.</p>
+        </header>
+
+        <!-- Step 1: Upload Zone -->
+        <section class="upload-zone" id="uploadZone">
+            <input type="file" id="imageInput" accept="image/*">
+            <label for="imageInput" class="upload-box">
+                <div class="upload-icon">. . .</div>
+                <span class="upload-title">Choose Your Canvas</span>
+                <span class="upload-sub">Tap to select a photo from your device</span>
+            </label>
+        </section>
+
+        <!-- Step 2: Interactive Studio Workspace (Hidden initially) -->
+        <section class="workspace" id="workspace">
+            <div class="canvas-frame" id="canvasFrame">
+                <canvas id="mainCanvas"></canvas>
+                <div class="compare-badge">Hold to view original</div>
+            </div>
+
+            <!-- Filter Intensity Slider -->
+            <div class="intensity-card">
+                <div class="slider-info">
+                    <span class="slider-label">Filter Strength</span>
+                    <span class="slider-value" id="intensityValue">100%</span>
+                </div>
+                <input type="range" id="intensitySlider" min="0" max="100" value="100">
+            </div>
+
+            <!-- Full-Width Classy Filter Selector -->
+            <div class="filter-deck">
+                <p class="deck-title">Curated Presets</p>
+                <div class="filter-list" id="filterList">
+                    <button class="filter-btn active" data-filter="normal">
+                        <span class="btn-name">Original Raw</span>
+                    </button>
+                    <button class="filter-btn" data-filter="glow90s">
+                        <span class="btn-name">90s Vintage Bloom</span>
+                    </button>
+                    <button class="filter-btn" data-filter="digicam2010">
+                        <span class="btn-name">2010s Digicam Flash</span>
+                    </button>
+                    <button class="filter-btn" data-filter="cherryVelvet">
+                        <span class="btn-name">Cherry Velvet Warmth</span>
+                    </button>
+
+                    <button class="filter-btn" data-filter="noirArchival">
+                        <span class="btn-name">Archival Midnight Noir</span>
+                    </button>
+                    <button class="filter-btn" data-filter="cinematicTeal">
+                        <span class="btn-name">Cinematic Teal & Amber</span>
+                    </button>
+                    <button class="filter-btn" data-filter="fadedEktar">
+                        <span class="btn-name">Faded Ektar Film</span>
+                    </button>
+
+                    <button class="filter-btn" data-filter="softMatte">
+                        <span class="btn-name">Soft Editorial Matte</span>
+                    </button>
+
+                    <button class="filter-btn" data-filter="heavyAnalog">
+                        <span class="btn-name">Heavy Analog Grain</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="action-bar">
+                <button class="btn btn-secondary" id="changePhotoBtn">Change Photo</button>
+                <button class="btn btn-primary" id="downloadBtn">Download Photo . . .</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
