@@ -1,184 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600&display=swap');
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Dynamic Moving Lava Gradient Background */
 body {
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-45deg, #1a1a1a, #2c1a1d, #4a1515, #121212);
-    background-size: 400% 400%;
-    animation: lavaGradient 15s ease infinite;
-    color: #222222;
-    padding: 16px;
+    background: radial-gradient(circle at center, #2d0b0e 0%, #120405 100%);
+    color: #2b2b2b;
+    padding: 20px 15px;
 }
 
-@keyframes lavaGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Central Card Container - Perfect Proportions for Mobile & Desktop */
-.app-container {
-    background: rgba(253, 251, 247, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(138, 28, 20, 0.2);
-    border-radius: 20px;
-    padding: 24px;
+/* Ivory Card Container */
+.app-container, .container, main {
+    background: #f2eae7;
+    border-radius: 28px;
+    padding: 32px 24px;
     width: 100%;
-    max-width: 480px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    text-align: center;
 }
 
-/* Editorial Typography */
+/* Elegant Cursive Header */
 h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.6rem;
     font-weight: 700;
     color: #8A1C14;
-    text-align: center;
-    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    line-height: 1.1;
 }
 
-.subtitle {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #555555;
+.subtitle, p.subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: #8A1C14;
     font-style: italic;
-    margin-top: -8px;
-    margin-bottom: 8px;
+    margin-bottom: 24px;
+    opacity: 0.9;
 }
 
-/* Canvas / Image Display Box */
-.canvas-container {
-    width: 100%;
-    min-height: 220px;
-    border: 2px dashed rgba(138, 28, 20, 0.4);
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* Upload / Canvas Box */
+.canvas-container, .upload-box, #drop-zone {
     background: #ffffff;
-    overflow: hidden;
-    position: relative;
+    border: 2px dashed #d6c7c2;
+    border-radius: 18px;
+    padding: 35px 20px;
+    margin-bottom: 20px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: border-color 0.2s ease;
 }
 
 .canvas-container:hover {
     border-color: #8A1C14;
-    background: #fdfaf6;
 }
 
-canvas {
-    max-width: 100%;
-    height: auto;
-    display: block;
+.dots, .dots-icon {
+    color: #8A1C14;
+    font-size: 1.5rem;
+    letter-spacing: 6px;
+    margin-bottom: 12px;
 }
 
-.placeholder-text {
-    padding: 16px;
-    text-align: center;
-    color: #555;
-    font-size: 0.9rem;
+.canvas-container h2, .upload-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
-/* Controls & Sliders */
+.canvas-container p, .upload-box p {
+    font-size: 0.85rem;
+    color: #776e6b;
+}
+
+/* Sliders and Controls */
 label {
     display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #333333;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #4a4442;
+    margin-bottom: 8px;
 }
 
 input[type="range"] {
     width: 100%;
     accent-color: #8A1C14;
-    cursor: pointer;
+    margin-bottom: 18px;
 }
 
-/* Curated Presets Grid */
-.presets-grid {
+/* Preset Buttons Grid */
+.presets-grid, .preset-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
+    margin-bottom: 20px;
 }
 
-.preset-btn {
+.preset-btn, button.preset {
     background: #ffffff;
-    border: 1px solid #dcd6cd;
-    padding: 10px;
+    border: 1px solid #e0d5d1;
+    padding: 10px 8px;
     border-radius: 8px;
     font-family: 'Poppins', sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
-    color: #222;
+    color: #2b2b2b;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    text-align: center;
+    transition: all 0.2s;
 }
 
 .preset-btn:hover, .preset-btn.active {
     background: #8A1C14;
     color: #ffffff;
     border-color: #8A1C14;
-    box-shadow: 0 4px 12px rgba(138, 28, 20, 0.3);
 }
 
 /* Action Buttons */
 .action-buttons {
     display: flex;
     gap: 10px;
-    margin-top: 4px;
 }
 
 .btn {
     flex: 1;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 600;
     cursor: pointer;
     border: none;
-    transition: background 0.2s;
-    text-align: center;
 }
 
-.btn-primary {
+.btn-primary, .download-btn {
     background: #8A1C14;
     color: #ffffff;
 }
 
-.btn-primary:hover {
-    background: #6e150f;
+.btn-secondary, .change-btn {
+    background: #e5dad6;
+    color: #2b2b2b;
 }
 
-.btn-secondary {
-    background: #e2d9cd;
-    color: #222222;
-}
-
-.btn-secondary:hover {
-    background: #d0c5b4;
-}
-
-#file-input {
+input[type="file"] {
     display: none;
-    }
+}
