@@ -1,103 +1,379 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Style – Ultra-Authentic Filter Suite</title>
-    <!-- Google Fonts for Dancing Script, Playfair Display & Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Link to CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
+    
+    <!-- Embedded Google Fonts & Complete Aesthetics -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap');
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #2d0b0e 0%, #120405 100%);
+            color: #2b2b2b;
+            padding: 20px 15px;
+        }
+
+        /* Ivory Card Container - Perfectly Centered & Styled */
+        .app-container {
+            background: #f2eae7;
+            border-radius: 28px;
+            padding: 32px 24px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Elegant Cursive Header */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.6rem;
+            font-weight: 700;
+            color: #8A1C14;
+            margin-bottom: 0;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            color: #8A1C14;
+            font-style: italic;
+            margin-top: -4px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        /* Upload Drop Zone & Canvas Styling */
+        .canvas-container {
+            background: #ffffff;
+            border: 2px dashed #d6c7c2;
+            border-radius: 18px;
+            padding: 24px 16px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .canvas-container:hover {
+            border-color: #8A1C14;
+            background: #fdfaf6;
+        }
+
+        .dots-icon {
+            color: #8A1C14;
+            font-size: 1.5rem;
+            letter-spacing: 6px;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .canvas-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #1a1a1a;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .canvas-container p {
+            font-size: 0.82rem;
+            color: #776e6b;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: none;
+        }
+
+        /* Controls Section */
+        .controls-section {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #4a4442;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: #8A1C14;
+            cursor: pointer;
+        }
+
+        /* Preset Buttons Grid */
+        .presets-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .preset-btn {
+            background: #ffffff;
+            border: 1px solid #e0d5d1;
+            padding: 10px 8px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #2b2b2b;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            outline: none;
+        }
+
+        .preset-btn:hover {
+            border-color: #8A1C14;
+            color: #8A1C14;
+        }
+
+        .preset-btn.active {
+            background: #8A1C14;
+            color: #ffffff;
+            border-color: #8A1C14;
+            box-shadow: 0 4px 12px rgba(138, 28, 20, 0.25);
+        }
+
+        /* Bottom Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #8A1C14;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #6e150f;
+        }
+
+        .btn-secondary {
+            background: #e5dad6;
+            color: #2b2b2b;
+        }
+
+        .btn-secondary:hover {
+            background: #d6c7c2;
+        }
+
+        #file-input {
+            display: none;
+        }
+    </style>
+</head>
 <body>
 
-    <!-- Deep Cherry Red & Wine Gradient Background Elements -->
-    <div class="gradient-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+    <div class="app-container">
+        <!-- Title & Subtitle -->
+        <h1>Style</h1>
+        <p class="subtitle">A suitable filter for you, made special.</p>
+        
+        <!-- Canvas / Upload Area -->
+        <div class="canvas-container" id="drop-zone" onclick="document.getElementById('file-input').click();">
+            <div id="upload-prompt">
+                <div class="dots-icon">• • •</div>
+                <h2>Choose Your Canvas</h2>
+                <p>Tap to select a photo from your device</p>
+            </div>
+            <canvas id="image-canvas"></canvas>
+            <input type="file" id="file-input" accept="image/*">
+        </div>
+
+        <!-- Filter Strength Slider -->
+        <div class="controls-section">
+            <div class="slider-header">
+                <span>Filter Strength</span>
+                <span id="strength-val">100%</span>
+            </div>
+            <input type="range" id="filter-slider" min="0" max="100" value="100">
+        </div>
+
+        <!-- Curated Preset Grid -->
+        <div class="presets-grid">
+            <button class="preset-btn active" data-preset="original">Original Raw</button>
+            <button class="preset-btn" data-preset="vintage">90s Vintage Bloom</button>
+            <button class="preset-btn" data-preset="digicam">2010s Digicam Flash</button>
+            <button class="preset-btn" data-preset="cherry">Cherry Velvet Warmth</button>
+            <button class="preset-btn" data-preset="noir">Archival Midnight Noir</button>
+            <button class="preset-btn" data-preset="cinematic">Cinematic Teal & Amber</button>
+            <button class="preset-btn" data-preset="ektar">Faded Ektar Film</button>
+            <button class="preset-btn" data-preset="matte">Soft Editorial Matte</button>
+            <button class="preset-btn" data-preset="grain">Heavy Analog Grain</button>
+        </div>
+
+        <!-- Bottom Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-secondary" id="change-btn" onclick="document.getElementById('file-input').click();">Change Photo</button>
+            <button class="btn btn-primary" id="download-btn">Download Photo...</button>
+        </div>
     </div>
 
-    <main class="app-card">
-        <header class="header">
-            <h1 class="brand-title">Style</h1>
-            <p class="tagline">A suitable filter for you, made special.</p>
-        </header>
+    <!-- JavaScript Filter & Image Logic -->
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const canvas = document.getElementById('image-canvas');
+        const ctx = canvas.getContext('2d');
+        const uploadPrompt = document.getElementById('upload-prompt');
+        const slider = document.getElementById('filter-slider');
+        const strengthVal = document.getElementById('strength-val');
+        const downloadBtn = document.getElementById('download-btn');
+        const presetBtns = document.querySelectorAll('.preset-btn');
 
-        <!-- Step 1: Upload Zone -->
-        <section class="upload-zone" id="uploadZone">
-            <input type="file" id="imageInput" accept="image/*">
-            <label for="imageInput" class="upload-box">
-                <div class="upload-icon">. . .</div>
-                <span class="upload-title">Choose Your Canvas</span>
-                <span class="upload-sub">Tap to select a photo from your device</span>
-            </label>
-        </section>
+        let loadedImage = null;
+        let activePreset = 'original';
 
-        <!-- Step 2: Interactive Studio Workspace (Hidden initially) -->
-        <section class="workspace" id="workspace">
-            <div class="canvas-frame" id="canvasFrame">
-                <canvas id="mainCanvas"></canvas>
-                <div class="compare-badge">Hold to view original</div>
-            </div>
+        // Load photo onto canvas
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
 
-            <!-- Filter Intensity Slider -->
-            <div class="intensity-card">
-                <div class="slider-info">
-                    <span class="slider-label">Filter Strength</span>
-                    <span class="slider-value" id="intensityValue">100%</span>
-                </div>
-                <input type="range" id="intensitySlider" min="0" max="100" value="100">
-            </div>
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    loadedImage = img;
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    uploadPrompt.style.display = 'none';
+                    canvas.style.display = 'block';
+                    applyFilters();
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
 
-            <!-- Full-Width Classy Filter Selector -->
-            <div class="filter-deck">
-                <p class="deck-title">Curated Presets</p>
-                <div class="filter-list" id="filterList">
-                    <button class="filter-btn active" data-filter="normal">
-                        <span class="btn-name">Original Raw</span>
-                    </button>
-                    <button class="filter-btn" data-filter="glow90s">
-                        <span class="btn-name">90s Vintage Bloom</span>
-                    </button>
-                    <button class="filter-btn" data-filter="digicam2010">
-                        <span class="btn-name">2010s Digicam Flash</span>
-                    </button>
-                    <button class="filter-btn" data-filter="cherryVelvet">
-                        <span class="btn-name">Cherry Velvet Warmth</span>
-                    </button>
+        // Handle preset switching
+        presetBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                presetBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                activePreset = this.getAttribute('data-preset');
+                applyFilters();
+            });
+        });
 
-                    <button class="filter-btn" data-filter="noirArchival">
-                        <span class="btn-name">Archival Midnight Noir</span>
-                    </button>
-                    <button class="filter-btn" data-filter="cinematicTeal">
-                        <span class="btn-name">Cinematic Teal & Amber</span>
-                    </button>
-                    <button class="filter-btn" data-filter="fadedEktar">
-                        <span class="btn-name">Faded Ektar Film</span>
-                    </button>
+        // Handle slider changes
+        slider.addEventListener('input', function() {
+            strengthVal.textContent = `${this.value}%`;
+            applyFilters();
+        });
 
-                    <button class="filter-btn" data-filter="softMatte">
-                        <span class="btn-name">Soft Editorial Matte</span>
-                    </button>
+        // Filter rendering engine
+        function applyFilters() {
+            if (!loadedImage) return;
 
-                    <button class="filter-btn" data-filter="heavyAnalog">
-                        <span class="btn-name">Heavy Analog Grain</span>
-                    </button>
-                </div>
-            </div>
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(loadedImage, 0, 0);
 
-            <!-- Action Controls -->
-            <div class="action-bar">
-                <button class="btn btn-secondary" id="changePhotoBtn">Change Photo</button>
-                <button class="btn btn-primary" id="downloadBtn">Download Photo . . .</button>
-            </div>
-        </section>
-    </main>
+            const strength = parseFloat(slider.value) / 100;
+            if (strength === 0 || activePreset === 'original') return;
 
-    <script src="script.js"></script>
+            const filterCanvas = document.createElement('canvas');
+            filterCanvas.width = canvas.width;
+            filterCanvas.height = canvas.height;
+            const fCtx = filterCanvas.getContext('2d');
+
+            fCtx.drawImage(loadedImage, 0, 0);
+
+            let filterString = '';
+            switch (activePreset) {
+                case 'vintage':
+                    filterString = 'sepia(0.35) contrast(1.1) brightness(1.05) saturate(1.3) hue-rotate(-10deg)';
+                    break;
+                case 'digicam':
+                    filterString = 'brightness(1.15) contrast(1.25) saturate(1.1)';
+                    break;
+                case 'cherry':
+                    filterString = 'sepia(0.2) saturate(1.4) hue-rotate(-15deg) brightness(1.02)';
+                    break;
+                case 'noir':
+                    filterString = 'grayscale(1) contrast(1.35) brightness(0.95)';
+                    break;
+                case 'cinematic':
+                    filterString = 'contrast(1.15) saturate(1.2) hue-rotate(15deg)';
+                    break;
+                case 'ektar':
+                    filterString = 'saturate(1.5) contrast(1.1) sepia(0.1)';
+                    break;
+                case 'matte':
+                    filterString = 'contrast(0.9) brightness(1.08) saturate(0.85)';
+                    break;
+                case 'grain':
+                    filterString = 'grayscale(0.5) contrast(1.2)';
+                    break;
+            }
+
+            fCtx.filter = filterString;
+            fCtx.drawImage(loadedImage, 0, 0);
+
+            ctx.globalAlpha = strength;
+            ctx.drawImage(filterCanvas, 0, 0);
+            ctx.globalAlpha = 1.0;
+        }
+
+        // Image Download handler
+        downloadBtn.addEventListener('click', function() {
+            if (!loadedImage) {
+                alert('Please upload a photo first!');
+                return;
+            }
+            const link = document.createElement('a');
+            link.download = 'style-filtered-photo.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+    </script>
 </body>
 </html>
+```
