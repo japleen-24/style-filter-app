@@ -31,7 +31,7 @@
         .app-container {
             background: #f2eae7;
             border-radius: 28px;
-            padding: 32px 24px;
+            padding: 28px 20px;
             width: 100%;
             max-width: 420px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
@@ -57,24 +57,24 @@
             color: #8A1C14;
             font-style: italic;
             margin-top: -4px;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             opacity: 0.9;
         }
 
-        /* Upload Drop Zone & Canvas Styling */
+        /* Upload Drop Zone - Spacious & Proportional */
         .canvas-container {
             background: #ffffff;
             border: 2px dashed #d6c7c2;
-            border-radius: 18px;
-            padding: 24px 16px;
+            border-radius: 22px;
+            padding: 35px 20px;
             margin-bottom: 4px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 220px;
+            min-height: 270px;
             position: relative;
             overflow: hidden;
         }
@@ -84,31 +84,39 @@
             background: #fdfaf6;
         }
 
+        #upload-prompt {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
         .dots-icon {
             color: #8A1C14;
-            font-size: 1.5rem;
-            letter-spacing: 6px;
-            margin-bottom: 8px;
+            font-size: 1.8rem;
+            letter-spacing: 8px;
+            margin-bottom: 4px;
             line-height: 1;
         }
 
         .canvas-container h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
+            font-size: 1.45rem;
             color: #1a1a1a;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .canvas-container p {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: #776e6b;
+            line-height: 1.4;
         }
 
         canvas {
             max-width: 100%;
             height: auto;
-            border-radius: 12px;
+            border-radius: 14px;
             display: none;
         }
 
@@ -116,14 +124,20 @@
         .controls-section {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            text-align: left;
+            gap: 8px;
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        .hold-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: #333333;
+            margin-bottom: -2px;
         }
 
         .slider-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: #4a4442;
         }
@@ -132,28 +146,40 @@
             width: 100%;
             accent-color: #8A1C14;
             cursor: pointer;
+            height: 6px;
+            border-radius: 3px;
         }
 
-        /* Preset Buttons Grid */
+        /* Presets Label */
+        .presets-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            margin-top: 4px;
+            margin-bottom: 2px;
+        }
+
+        /* Preset Buttons Grid & Pill Formatting */
         .presets-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 8px;
         }
 
         .preset-btn {
             background: #ffffff;
-            border: 1px solid #e0d5d1;
-            padding: 10px 8px;
+            border: 1px solid #dcd6cd;
+            padding: 8px 14px;
             border-radius: 8px;
             font-family: 'Poppins', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 500;
             color: #2b2b2b;
             cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
+            transition: all 0.2s ease;
             outline: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
         .preset-btn:hover {
@@ -165,22 +191,22 @@
             background: #8A1C14;
             color: #ffffff;
             border-color: #8A1C14;
-            box-shadow: 0 4px 12px rgba(138, 28, 20, 0.25);
+            box-shadow: 0 4px 10px rgba(138, 28, 20, 0.3);
         }
 
         /* Bottom Action Buttons */
         .action-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 4px;
+            margin-top: 8px;
         }
 
         .btn {
             flex: 1;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 13px;
+            border-radius: 12px;
             font-family: 'Poppins', sans-serif;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             border: none;
@@ -190,6 +216,7 @@
         .btn-primary {
             background: #8A1C14;
             color: #ffffff;
+            box-shadow: 0 4px 12px rgba(138, 28, 20, 0.3);
         }
 
         .btn-primary:hover {
@@ -222,7 +249,7 @@
             <div id="upload-prompt">
                 <div class="dots-icon">• • •</div>
                 <h2>Choose Your Canvas</h2>
-                <p>Tap to select a photo from your device</p>
+                <p>Tap to select a photo<br>from your device</p>
             </div>
             <canvas id="image-canvas"></canvas>
             <input type="file" id="file-input" accept="image/*">
@@ -230,12 +257,12 @@
 
         <!-- Filter Strength Slider -->
         <div class="controls-section">
-            <div class="slider-header">
-                <span>Filter Strength</span>
-                <span id="strength-val">100%</span>
-            </div>
+            <div class="hold-text">Hold to view original</div>
+            <div class="slider-header">Filter Strength <span id="strength-val">100%</span></div>
             <input type="range" id="filter-slider" min="0" max="100" value="100">
         </div>
+
+        <div class="presets-title">Curated Presets</div>
 
         <!-- Curated Preset Grid -->
         <div class="presets-grid">
